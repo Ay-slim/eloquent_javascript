@@ -1,11 +1,10 @@
-function checkArrayValidity (arrayToCheck) {
-    if (!Array.isArray(arrayToCheck)) throw new Error ('Please pass an array as argument');
-}
+const { checkArrayValidity,
+        checkNumberValidity
+    } = require('./utils');
 
 function range(start, end, step=1) {
-    if (typeof start !== 'number' || typeof end !== 'number') {
-        throw new Error('Please pass numbers as arguments');
-    }
+    [start, end].map(checkNumberValidity);
+    
     let fullRange = [];
     for (let j = start; j <= end; j+=step) {
         fullRange.push(j);
@@ -29,5 +28,5 @@ function reverseArray(arrayToReverse) {
     return reversedArray;
 }
 
-reverseArray(['a', 'b', 100, 39, 'err']);
+reverseArray('bruhh');
 //console.log(addAll(range(1,10, 1)));

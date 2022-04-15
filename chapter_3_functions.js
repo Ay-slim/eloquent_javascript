@@ -1,9 +1,12 @@
+const {
+    checkNumberValidity, 
+    checkStringValidity
+} = require('./utils');
+
 function minimum(a, b) {
-    a = Number(a);
-    b = Number(b);
-    if (!a || !b) {
-        throw new Error('Cannot compare non numbers');
-    }
+
+    [a, b].map(checkNumberValidity);
+
     if(a === b) {
         return null;
     }
@@ -22,7 +25,7 @@ function isEven(n) {
 }
 
 function countChars(mainString, charToCheck) {
-    if (typeof mainString !== 'string' || typeof charToCheck !== 'string') throw new Error('Function only takes a string');
+    [mainString, charToCheck].map(checkStringValidity);
     let numberOfOccurrences = 0;
     for (let j=0; j < mainString.length; j++) {
         if (mainString[j] === charToCheck) numberOfOccurrences++;
@@ -32,4 +35,4 @@ function countChars(mainString, charToCheck) {
 
 //console.log(minimum(6,6));
 //console.log(isEven(2));
-console.log(countChars('adabacebecebe', 4));
+console.log(countChars('adabacebecebe', 'e'));

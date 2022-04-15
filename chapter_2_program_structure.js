@@ -1,3 +1,5 @@
+const { checkNumberValidity } = require('./utils');
+
 function basicPrint() {
     let toPrint = '';
     for (let j = 0; j<7; j++) {
@@ -23,6 +25,7 @@ function fizzBuzz() {
 }
 
 function chessBoard(n){
+    checkNumberValidity(n);
     let outerSwitch;
     let toPrint='';
     for(let j=1 ; j<n+1 ; j++){
