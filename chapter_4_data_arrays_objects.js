@@ -133,6 +133,16 @@ function prePendNReconstruct(currentValues, finalRest){
     } 
 }
 
+function objectEquality(a, b) {
+    if (a === b) return true;
+    let keysA = Object.keys(a), keysB = Object.keys(b);
+    if(keysA.length !== keysB.length) return false
+    for (j of keysA) {
+        if (!b[j]) return false
+        if (a[j] !== b[j]) return false
+    }
+    return true
+}
 const testArray = ['brih', 'brah', 'breh', 'bruh', 'broh', 'bryh'];
 const testList = { value: '3', rest: { value: '4', rest: { value: '8', rest: null } } };
 //console.log(addAll(range(1,10, 1)));
@@ -140,4 +150,7 @@ const testList = { value: '3', rest: { value: '4', rest: { value: '8', rest: nul
 //console.log(reverseArrayInPlace(testArray));
 //console.log(arrayToList(testArray))
 //console.log(listToArray());
-console.log(prePendN(testList, '42'));
+//console.log(prePendN(testList, '42'));
+let first = {f: 1, g: 7};
+let second = {f: 1, g: 7};
+console.log(objectEquality(first, second))
