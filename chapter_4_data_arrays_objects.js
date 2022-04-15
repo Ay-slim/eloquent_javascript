@@ -42,6 +42,11 @@ function recursiveReversal (startIndex, endIndex, stopIndex, arrayToReverse) {
     return recursiveReversal(startIndex+1, endIndex-1, stopIndex, arrayToReverse);
 }
 
+function arrayToList (arrayToConvert) {
+    const lastIndex = arrayToConvert.length-1;
+    return spawnObjRecursively(0, lastIndex, arrayToConvert)
+}
+
 function spawnObjRecursively (presentIndex, lastIndex, arrayToConvert) {
     if (presentIndex === lastIndex) {
         return {
@@ -55,9 +60,15 @@ function spawnObjRecursively (presentIndex, lastIndex, arrayToConvert) {
     }
 }
 
-function arrayToList (arrayToConvert) {
-    const lastIndex = arrayToConvert.length-1;
-    return spawnObjRecursively(0, lastIndex, arrayToConvert)
+function listToArray (listToConvert) {
+    let values = []
+    return recursivelyCombList(listToConvert, values)
+}
+
+function recursivelyCombList (listToConvert, values) {
+    if(!listToConvert) return values;
+    values.push(listToConvert.value);
+    return recursivelyCombList(listToConvert.rest, values)
 }
 
 const testArray = ['brih', 'brah', 'breh', 'bruh', 'broh', 'bryh'];
@@ -65,4 +76,5 @@ const testArray = ['brih', 'brah', 'breh', 'bruh', 'broh', 'bryh'];
 //console.log(addAll(range(1,10, 1)));
 // console.log(reverseArray(testArray));
 // console.log(reverseArrayInPlace(testArray));
-console.log(arrayToList(['3', '4', '8']))
+//console.log(arrayToList(testArray))
+console.log(listToArray({ value: '3', rest: { value: '4', rest: { value: '8', rest: null } } }));
