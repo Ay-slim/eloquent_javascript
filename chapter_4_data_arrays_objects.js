@@ -1,6 +1,7 @@
-const { checkArrayValidity,
-        checkNumberValidity
-    } = require('./utils');
+const { 
+    checkArrayValidity,
+    checkNumberValidity,
+} = require('./utils');
 /**
  * Sum of range of numbers
  */
@@ -65,12 +66,12 @@ function spawnObjRecursively (presentIndex, lastIndex, arrayToConvert) {
     if (presentIndex === lastIndex) {
         return {
             value: arrayToConvert[lastIndex],
-            rest: null
+            rest: null,
         }
     }
     return {
         value: arrayToConvert[presentIndex],
-        rest: spawnObjRecursively(presentIndex+1, lastIndex, arrayToConvert)
+        rest: spawnObjRecursively(presentIndex+1, lastIndex, arrayToConvert),
     }
 }
 
@@ -111,7 +112,7 @@ function prePendN(listToConvert, value, n=0, counter=0, currentValues=[]) {
     }else if(n === counter) {
         let finalRest = {
             value: value,
-            rest: listToConvert
+            rest: listToConvert,
         }
         return prePendNReconstruct(currentValues, finalRest);
     }
@@ -123,12 +124,12 @@ function prePendNReconstruct(currentValues, finalRest){
     if(currentValues.length===1){
         return {
             value: currentValues.pop(),
-            rest: finalRest
+            rest: finalRest,
         }
     }
     return {
         value: currentValues.pop(),
-        rest: prePendNReconstruct(currentValues, finalRest)
+        rest: prePendNReconstruct(currentValues, finalRest),
     } 
 }
 
