@@ -1,7 +1,7 @@
 const { 
     checkArrayValidity,
     checkNumberValidity,
-} = require('./utils');
+} = require('../utils');
 /**
  * Sum of range of numbers
  */

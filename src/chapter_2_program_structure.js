@@ -1,4 +1,4 @@
-const { checkNumberValidity } = require('./utils');
+const { checkNumberValidity } = require('../utils');
 
 function basicPrint() {
     let toPrint = '';

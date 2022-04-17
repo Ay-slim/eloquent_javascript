@@ -1,7 +1,7 @@
 const {
     checkNumberValidity, 
     checkStringValidity
-} = require('./utils');
+} = require('../utils');
 
 function minimum(a, b) {
 
