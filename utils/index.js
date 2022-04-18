@@ -1,11 +1,18 @@
+function throwError (type) {
+    throw new Error(`Invalid type. Please pass ${type}(s) as argument(s).`);
+}
+
 module.exports = {
     checkArrayValidity: function (arrayToCheck) {
-        if (!Array.isArray(arrayToCheck)) throw new Error('Invalid type. Please pass array(s) as argument(s).');
+        if (!Array.isArray(arrayToCheck)) throwError('array');
     },
     checkNumberValidity: function (numberToCheck) {
-        if (typeof numberToCheck !== 'number') throw new Error('Invalid type. Please pass number(s) as argument(s)');
+        if (typeof numberToCheck !== 'number') throwError('number');
     },
     checkStringValidity: function (stringToCheck) {
-        if (typeof stringToCheck !== 'string') throw new Error('Invalid type. Please pass string(s) as argument(s)')
+        if (typeof stringToCheck !== 'string') throwError('string');
+    },
+    checkObjectValidity: function (objectToCheck) {
+        if (objectToCheck.toString() !== '[object Object]') throwError('object');
     }
 }
