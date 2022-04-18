@@ -14,6 +14,7 @@ function loop (argList) {
 }
 
 function every (arrayToTest, func) {
+    //TO-DO: Figure out how to implement this with the some array method
     for(el of arrayToTest) {
         if(!func(el)) return false
     }
