@@ -7,7 +7,23 @@ class Vec {
         return Math.sqrt(this.x**2 + this.y**2);
     }
 }
-
+class GroupIterator {
+    constructor(group) {
+        this.ix=0
+        this.group = group
+    }
+    next() {
+        if(this.ix === this.group.store.length) {
+            return {done: true}
+        }
+        let value = {
+            index: this.ix,
+            value: this.group.store[this.ix],
+        }
+        this.ix++
+        return {value, done: false}
+    }
+}
 class Group {
     constructor(store=[]) {
         this.store = store;
@@ -31,7 +47,17 @@ class Group {
         }
         return new Group(tempStore);
     }
+    // To make a class iterable (using for/of), add a Symbol.iterator method that calls another iterator class which accepts an instance of the original class as an arg and defines the next method
+    [Symbol.iterator] () {
+        return new GroupIterator(this);
+    }
 }
+
+// Group.prototype[Symbol.iterator] = function() {
+//     return new GroupIterator(this);
+// };
+
+
 
 //let groupie = new Group;
 //groupie.add = 5;
@@ -43,9 +69,13 @@ class Group {
 
 let fd = "dkdmd dkd"
 let groupie2 = Group.from(fd);
-console.log(groupie2)
-console.log(groupie2.has='a')
-console.log(groupie2.has='d')
+//console.log(groupie2,'GROUPIEEE 2')
+// console.log(groupie2.has='a')
+// console.log(groupie2.has='d')
+
+for (let {index, value} of groupie2) {
+    console.log(index, value)
+}
 
 
 // let vec3 = new Vec(3, 4);
