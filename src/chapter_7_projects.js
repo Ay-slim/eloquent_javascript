@@ -43,5 +43,20 @@ class VillageState {
     }
 }
 
+function runRobot(state, robot, memory) {
+    for(let turn=0;;turn++){
+        if(state.parcels.length === 0) {
+            console.log(`Done in ${turn} turns`)
+            break
+        }
+        const action = robot(state, memory);
+        state = state.move(action.direction);
+        memory = action.memory;
+        console.log(`Moved to ${action.direction}`);
+    }
+}
 
+// let first = new VillageState("Post Office", [{place: "Post Office", address: "Marketplace"}]);
+// let next = first.move("Marketplace");
+// console.log(first.place, first.parcels, next.place, next.parcels)
 
