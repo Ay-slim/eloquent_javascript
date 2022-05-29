@@ -30,3 +30,28 @@ function keepTrying () {
 }
 
 console.log(keepTrying())
+
+const box = {
+    locked: true,
+    unlock() { this.locked = false; },
+    lock() { this.locked = true;  },
+    _content: [],
+    get content() {
+ if (this.locked) throw new Error("Locked!");
+      return this._content;
+    }
+ };
+
+function withBoxUnclocked(functionValue) {
+    box.unlock();
+    console.log(box.locked, 'LOCK STATE START')
+    try {
+        functionValue()
+    } finally {
+        box.lock()
+        console.log(box.locked, 'LOCK STATE END')
+        return "Done"
+    }
+}
+
+//console.log(withBoxUnclocked(primitiveMultiply))
