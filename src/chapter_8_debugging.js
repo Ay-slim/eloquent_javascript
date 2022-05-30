@@ -15,7 +15,10 @@ function primitiveMultiply() {
 }
 
 // console.log(primitiveMultiply())
-/**For some reason, this works but returns undefined when retrying after throwing an error.  Gotta figure that out */
+/**
+ * BLOCKER: For some reason, this works but returns undefined when retrying after throwing an error.  Gotta figure that out 
+ * SOLUTION: Figured it out. Wasn't returning keepTrying() from the catch block
+*/
 function keepTrying () {
     try {
         return primitiveMultiply();
@@ -24,7 +27,7 @@ function keepTrying () {
         console.log('ENTERED CATCH??????')
         if (e instanceof MultiplicatorUnitFailure) {
             console.log('ENTERED IFF?????')
-            keepTrying()
+            return keepTrying()
         }
     }
 }
